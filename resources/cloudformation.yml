@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: A sample template
+Resources:
+  CloudwatchRule: #An inline comment
+    Type: AWS::Events::Rule
+    Properties: 
+      Description: Initiate stock momentum report initial lambda
+      ScheduleExpression: !Ref ScheduleCron
+      Name: HQMReportInitiate
+      Targets: []
+  InitiateHQMReport:
+    Type: AWS::Lambda::Function:
+    Properties:
+      Code:
+        S3Bucket: !Ref S3Bucket
+        S3Key: !Ref HQMReportInitiateS3Key
+Parameters:
+  ScheduleCron:
+    Type: String
+    Description: cron for running initial lambda
+    Default: cron(0 0 * * SAT *)
+  S3Bucket:
+    Type: String
+    Description: main S3 bucket for deployables
+    Default: ericsturman
+  HQMReportInitiateS3Key:
+    Type: String
+    Description: key for initiate report lambda code
+    
