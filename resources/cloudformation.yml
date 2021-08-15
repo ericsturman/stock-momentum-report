@@ -7,7 +7,23 @@ Resources:
       Description: Initiate stock momentum report initial lambda
       ScheduleExpression: !Ref ScheduleCron
       Name: HQMReportInitiate
-      Targets: []
+      Targets: 
+        - 
+          Arn: 
+            Fn::GetAtt: 
+              - "InitiateHQMReport"
+              - "Arn"
+          Id: "TargetFunctionV1"
+  PermissionForEventsToInvokeLambda: 
+    Type: AWS::Lambda::Permission
+    Properties: 
+      FunctionName: !Ref "LambdaFunction"
+      Action: "lambda:InvokeFunction"
+      Principal: "events.amazonaws.com"
+      SourceArn: 
+        Fn::GetAtt: 
+          - "CloudwatchRule"
+          - "Arn"
   InitiateHQMReport:
     Type: AWS::Lambda::Function:
     Properties:
