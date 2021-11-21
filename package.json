@@ -1,0 +1,25 @@
+{
+  "name": "stock-momentum-report",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericsturman/stock-momentum-report.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ericsturman/stock-momentum-report/issues"
+  },
+  "homepage": "https://github.com/ericsturman/stock-momentum-report#readme",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  }
+}
